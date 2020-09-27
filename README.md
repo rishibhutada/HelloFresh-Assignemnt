@@ -19,9 +19,9 @@ Using Apache Spark and Python read processed dataset from S3
 * A CSV file with average cooking time per difficulty level. Please add it to output folder. File should have 2 columns: difficulty,avg_total_cooking_time and named as report.csv
 
 ## Solution 
--Following is the approach that I have taken for the solution
+Following is the approach that I have taken for the solution
 
-##Data Exploration
+## Data Exploration
 - Data has following nine columns:
 *name
 *ingredients
@@ -33,7 +33,7 @@ Using Apache Spark and Python read processed dataset from S3
 *prepTime
 *description
 
-- Out of the above mentioned columns only four columns namely **name,ingredients,prepTime and cookTime** are important to us. So we will drop other columns initially and select only the required columns
+- Out of the above mentioned columns only four columns namely **name, ingredients ,prepTime and cookTime** are important to us. So we will drop other columns initially and select only the required columns
 - *prepTime* and *cookTime* are not in desired format, so we need to convert them using an UDF. eg. We need to convert given prep time as 'PT50M' to 50 so that we can perform mathematical operations over it.
 - *ingredients* contains a long description of different ingredients with their respective quantity separated by '\n'. We just need to check if in the list of ingredients, if beef is there or not. We will filter only those columns who pass this check.
 
