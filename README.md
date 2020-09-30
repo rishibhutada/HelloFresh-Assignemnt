@@ -1,23 +1,57 @@
-# HelloFresh Average Cooking Duration Per Difficulty Level
+# Average Cooking Duration Per Difficulty Level
 
-## Problem Statement 
-Given a .json file with a collection of recipes stored on S3, need to:
+We ingest events from our Kafka Stream and store them in our DataLake on s3. 
+Events are sorted by arriving date. For example `events/recipe_changes/2019/11/29`.
+During events processing we heavily rely on execution day to make sure we pick proper chunk of data and keep historical results.
+We use Apache Spark to work with data and store it on s3 in parquet format. Our primary programming language is Python.
 
-* Extract only recipes that have beef as one of the ingredients
-* Calculate average cooking time duration per difficulty level
-* Total cooking time duration can be calculated by formula:
+# Exercise
+## Overview
+We are interested in tracking changes to see available recipes, their cooking time and difficulty level.
 
-```total_cook_time = cookTime + prepTime```
+## Task 1
+Using Apache Spark and Python, read and pre-process rows to ensure further optimal structure and performance 
+for further processing. 
+
+## Task 2
+Using Apache Spark and Python read processed dataset from step 1 and: 
+1. extract only recipes that have `beef` as one of the ingredients
+2. calculate average cooking time duration per difficulty level
+
+Total cooking time duration can be calculated by formula:
+```bash
+total_cook_time = cookTime + prepTime
+```  
 
 Criteria for levels based on total cook time duration:
-* **easy** - less than 30 minutes
-* **medium** - between 30 and 60 minutes
-* **hard** - more than 60 minutes.
+- easy - less than 30 mins
+- medium - between 30 and 60 mins
+- hard - more than 60 mins.
 
 ## Deliverables
-* A deployable Spark Application written in Python
-* A README file with brief explanation of approach, data exploration and assumptions/considerations. You can use this file by adding new section or create a new one.
-* A CSV file with average cooking time per difficulty level. Please add it to output folder. File should have 2 columns: difficulty,avg_total_cooking_time and named as report.csv
+- A deployable Spark Application written in Python
+- a README file with brief explanation of approach, data exploration and assumptions/considerations. 
+You can use this file by adding new section or create a new one.
+- a CSV file with average cooking time per difficulty level. Please add it to `output` folder.
+File should have 2 columns: `difficulty,avg_total_cooking_time` and named as `report.csv`
+
+## Requirements
+- Well structured, object-oriented, documented and maintainable code
+- Unit tests to test the different components
+- Errors handling
+- Documentation
+- Solution is deployable and we can run it
+
+## Bonus points
+- Config handling
+- Logging and alerting
+- Consider scaling of your application
+- CI/CD explained
+- Performance tuning explained
+- We love clean and maintainable code
+- We appreciate good combination of Software and Data Engineering
+
+# Solution
 
 ## Data Exploration
  Data has following nine columns:
