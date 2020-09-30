@@ -1,0 +1,4 @@
+
+*.log
+*.crc
+output/_SUCCESS
